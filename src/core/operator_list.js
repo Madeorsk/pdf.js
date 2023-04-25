@@ -27,7 +27,7 @@ function addState(parentState, pattern, checkFn, iterateFn, processFn) {
     const item = pattern[i];
     state = state[item] || (state[item] = []);
   }
-  state[pattern.at(-1)] = {
+  state[pattern[Math.max(pattern.length - 1, 0)]] = {
     checkFn,
     iterateFn,
     processFn,

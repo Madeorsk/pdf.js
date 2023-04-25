@@ -218,10 +218,12 @@ class KeyboardManager {
         const isMacKey = key.startsWith("mac+");
         if (isMac && isMacKey) {
           this.callbacks.set(key.slice(4), callback);
-          this.allKeys.add(key.split("+").at(-1));
+          const splitKey = key.split("+");
+          this.allKeys.add(splitKey[Math.max(splitKey.length - 1, 0)]);
         } else if (!isMac && !isMacKey) {
           this.callbacks.set(key, callback);
-          this.allKeys.add(key.split("+").at(-1));
+          const splitKey = key.split("+");
+          this.allKeys.add(splitKey[Math.max(splitKey.length - 1, 0)]);
         }
       }
     }
